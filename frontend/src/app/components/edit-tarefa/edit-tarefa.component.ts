@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { DataService } from '../../service/data.service';
 import { Task } from '../../task';
 import { ActivatedRoute } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-edit-tarefa',
   standalone: true,
-  imports: [],
+  imports: [ FormsModule],
   templateUrl: './edit-tarefa.component.html',
   styleUrl: './edit-tarefa.component.css',
 })

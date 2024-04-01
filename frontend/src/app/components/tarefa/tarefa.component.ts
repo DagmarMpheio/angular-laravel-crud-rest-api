@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../../service/data.service';
 import { Task } from '../../task';
+import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-tarefa',
   standalone: true,
-  imports: [],
+  imports: [ FormsModule, RouterModule],
   templateUrl: './tarefa.component.html',
   styleUrl: './tarefa.component.css',
 })
