@@ -1,1 +1,14 @@
-<p>edit-tarefa works!</p>
+<form >
+    <div class="form-group">
+        <label for="name">Enter Name</label>
+        <input type="text" name="name" class="form-control" [(ngModel)]="task.name">
+    </div>
+
+    <div class="form-group">
+        <label for="name">Enter Email</label>
+        <input type="text" name="email" class="form-control" [(ngModel)]="task.email">
+    </div>
+
+    <button class="btn btn-primary btn-sm mt-4">Update</button>
+
+</form>

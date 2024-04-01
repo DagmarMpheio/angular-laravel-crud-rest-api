@@ -1,12 +1,39 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { DataService } from '../../service/data.service';
+import { Task } from '../../task';
 
 @Component({
   selector: 'app-tarefa',
   standalone: true,
   imports: [],
   templateUrl: './tarefa.component.html',
-  styleUrl: './tarefa.component.css'
+  styleUrl: './tarefa.component.css',
 })
-export class TarefaComponent {
+export class TarefaComponent implements OnInit {
+  tasks: any;
+  task = new Task();
 
+  constructor(private dataService: DataService) {}
+
+  ngOnInit() {
+    this.getTasksdata();
+  }
+
+  getTasksdata() {
+    this.dataService.getData().subscribe((res) => {
+      this.tasks = res;
+    });
+  }
+
+  insertData() {
+    this.dataService.insertData(this.tasks).subscribe((res) => {
+      this.getTasksdata();
+    });
+  }
+
+  deleteData(id:any){
+    this.dataService.deleteData(id).subscribe(res => {
+      this.getTasksdata();
+    })
+  }
 }
