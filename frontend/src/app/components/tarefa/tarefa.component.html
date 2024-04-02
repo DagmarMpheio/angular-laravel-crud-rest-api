@@ -2,15 +2,15 @@
     <thead>
         <tr>
             <th>#</th>
-            <th>Name</th>
-            <th>Email</th>
+            <th>Nome</th>
+            <th>Descrição</th>
         </tr>
     </thead>
     <tbody>
         <tr *ngFor="let taskof tasks">
             <td>{{ task.id }}</td>
             <td>{{ task.name }}</td>
-            <td>{{ task.email }}</td>
+            <td>{{ task.description }}</td>
             <td> <button class="btn btn-warning btn-sm mx-2" routerLink="edit/{{ task.id }}">Edit</button></td>
             <td>  <button class="btn btn-danger btn-sm mz-2" (click)="deleteData(task.id)">Delete</button></td>
         </tr>
@@ -19,18 +19,13 @@
 
 <form (ngSubmit)="insertData()">
     <div class="form-group">
-        <label for="name">Enter Name</label>
+        <label for="name">Insira o nome</label>
         <input type="text" name="name" class="form-control" [(ngModel)]="task.name">
     </div>
 
     <div class="form-group">
-        <label for="name">Enter Email</label>
-        <input type="text" name="email" class="form-control" [(ngModel)]="task.email">
-    </div>
-
-    <div class="form-group">
-        <label for="name">Enter Password</label>
-        <input type="password" name="password" class="form-control" [(ngModel)]="task.password">
+        <label for="name">Insira a descrição</label>
+        <input type="text" name="description" class="form-control" [(ngModel)]="task.description">
     </div>
 
     <button class="btn btn-primary btn-sm mt-4">Submit</button>
