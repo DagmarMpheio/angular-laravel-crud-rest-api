@@ -38,7 +38,8 @@ class TarefaController extends Controller
         $request['status'] = 'Pendente';
 
         $tarefa = Tarefa::create($request->all());
-        return response()->json($tarefa, 201);
+        return dd($tarefa);
+        //return response()->json($tarefa, 201);
     }
 
     /**
@@ -63,6 +64,12 @@ class TarefaController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        $tarefa = Tarefa::find($id);
+
+        if (!$tarefa) {
+            return response()->json(['message' => 'Tarefa não encontrada'], 404);
+        }
+
         $request->validate([
             'name' => 'required',
             'description' => 'required',
@@ -71,7 +78,6 @@ class TarefaController extends Controller
         //por padrao uma tarefa tem status de pendente
         $request['status'] = 'Pendente';
 
-        $tarefa = Tarefa::find($id);
         $tarefa->update($request->all());
         return response()->json($tarefa, 200);
     }
@@ -81,7 +87,12 @@ class TarefaController extends Controller
      */
     public function destroy(string $id)
     {
-        Tarefa::destroy($id);
-        return response()->json(null, 204);
+        $tarefa = Tarefa::find($id);
+        if (!$tarefa) {
+            return response()->json(['message' => 'tarefa não encontrada'], 404);
+        }
+
+        $tarefa::destroy($id);
+        return response()->json(['message' => 'Tarefa excluída com sucesso'], 204);
     }
 }
