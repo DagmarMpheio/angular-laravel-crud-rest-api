@@ -16,8 +16,8 @@ class TarefaSeeder extends Seeder
     public function run(): void
     {
         //reset a tabela tarefas
-        //DB::statement('SET FOREIGN_KEY_CHECKS=0'); // para mysql
-        DB::statement('PRAGMA foreign_keys = OFF;'); // para sqlite
+        DB::statement('SET FOREIGN_KEY_CHECKS=0'); // para mysql
+        //DB::statement('PRAGMA foreign_keys = OFF;'); // para sqlite
         DB::table('tarefas')->truncate(); //apagar todos os dados da tabela
 
         //gerar 5 tarefas
